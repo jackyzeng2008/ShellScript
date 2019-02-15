@@ -1,0 +1,67 @@
+[client]
+default-character-set = utf8
+port=3306
+socket=/var/lib/mysql/mysql.sock
+
+[mysqld]
+general_log=off
+general_log_file=/var/lib/mysql/general.log
+port=3306
+socket=/var/lib/mysql/mysql.sock
+user=mysql
+basedir=/usr
+datadir=/var/lib/mysql
+back_log=600
+max_connections=3000
+max_connect_errors=6000
+max_allowed_packet=32M
+sort_buffer_size=2M
+join_buffer_size=2M
+thread_cache_size=300
+thread_concurrency=8
+query_cache_size=64M
+query_cache_limit=4M
+query_cache_min_res_unit=2K
+default_storage_engine=InnoDB
+transaction_isolation=REPEATABLE-READ
+tmp_table_size=256M
+max_heap_table_size=256M
+expire_logs_days=7
+key_buffer_size=2048M
+read_buffer_size=1M
+read_rnd_buffer_size=16M
+bulk_insert_buffer_size=64M
+#skip-name-resolve
+lower_case_table_names=1
+server-id=127
+#innodb_additional_mem_pool_size=16M
+innodb_buffer_pool_size=2048M
+#innodb_data_file_path=ibdata1:1024M:autoextend
+innodb_file_io_threads=4
+innodb_thread_concurrency=8
+innodb_flush_log_at_trx_commit=2
+innodb_log_buffer_size=16M
+innodb_log_file_size=128M
+innodb_log_files_in_group=3
+innodb_max_dirty_pages_pct=90
+innodb_lock_wait_timeout=120
+innodb_file_per_table=0
+symbolic-links=0
+character-set-server = utf8
+collation-server = utf8_general_ci
+language = english
+#default-time-zone = Asia/Shanghai
+#default-time-zone = Europe/Berlin
+default_week_format = 0
+#log_bin=master-bin
+#log-bin-index=master-bin.index
+relay-log = slave-relay-bin
+relay-log-index = slave-relay-bin.index
+replicate-ignore-db=mysql
+replicate-ignore-db=information_schema
+read-only
+
+log-error=/var/lib/mysql/mysql.err
+pid-file=/var/lib/mysql/mysql.pid
+
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES 

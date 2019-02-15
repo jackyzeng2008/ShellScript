@@ -1,0 +1,28 @@
+#!/bin/bash
+#Run this script under "root" account
+
+USER=nginx
+SOURCE_PATH=./webfrontpkg
+INSTALL_PATH=/webroot/x1288
+
+#Check Source File
+if [ ! -f $SOURCE_PATH/germanysys-master.tar.gz ];then
+   echo "[`date '+%Y-%m-%d %H:%M:%S'`] Tar file doesn't exist,please check."
+   exit
+fi
+
+#Create Project Folder
+mkdir -p $INSTALL_PATH
+
+#Delete Old File
+rm -rf $INSTALL_PATH/*
+
+#Extract tar file
+tar -zxvf $SOURCE_PATH/germanysys-master.tar.gz -C $SOURCE_PATH
+
+#Copy new file to $INSTALL_PATH
+#mv $SOURCE_PATH/germanysys-master/dist/* $INSTALL_PATH
+mv $SOURCE_PATH/dist/* $INSTALL_PATH
+
+#Change Owner
+chown -R $USER:$USER $INSTALL_PATH
